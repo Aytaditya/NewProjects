@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Transaction Simulator</title>
+    <style>
+        .block{
+            background-color: rgb(100, 97, 94);
+        }
+        body{
+            background: url('blockchain2.jpg');
+            background-size: 1280px;
+            
+        }
+        .block {
+            border: 2px solid white;
+            padding: 20px;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            color: blue;
+            background-color: aquamarine;
+        }
+        .hehe{
+            font-family: bold;
+            color:white;
+            font-size: 15px;
+        }
+        
+        
+        
+    </style>
+</head>
+
+<body>
+    <div class="block">
+        <label for="data"><p class=hehe>DATA</p></label>
+        <textarea id="data" rows="4" cols="50" placeholder="Enter data..."></textarea>
+
+        <label for="blockNumber" ><p class="hehe">BLOCK NUMBER:</p></label>
+        <input type="number" id="blockNumber" placeholder="Enter block number...">
+
+        <label for="nonce" class="hehe"><p>NONCE</p>:</label>
+        <input type="number" id="nonce" placeholder="Enter nonce...">
+
+        <label><p class="hehe">HASH</p></label>
+        <input type="text" id="hash" readonly>
+
+        <button onclick="generateHash()" class="button1">Transaction</button>
+    </div>
+
+    <script>
+        function generateHash() {
+            const data = document.getElementById('data').value;
+            const blockNumber = document.getElementById('blockNumber').value;
+            const nonce = document.getElementById('nonce').value;
+            const combinedData = data + blockNumber + nonce;
+
+           
+            const hash = btoa(combinedData).substring(0, 64);
+
+            document.getElementById('hash').value = hash;
+        }
+    </script>
+</body>
+
+</html>
